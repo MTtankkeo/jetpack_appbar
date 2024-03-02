@@ -1,11 +1,13 @@
 package com.ttangkong.jetpack_appbar
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import kotlin.math.log
 
 @Composable
 fun rememberAppBarState(): AppBarState {
@@ -17,25 +19,25 @@ class AppBarState(
 ) {
     var offset by mutableFloatStateOf(initialOffset)
 
-    // Defined when composition of a target component.
-    // And, this value can change whenever it is re-composition.
-    var minExtent = 0;
-
     // Defined when layout phase or composition of a target component.
     // And, this value is mostly equal to the height of the component.
-    var maxExtent = 0
+    var extent = 0
 
-    fun expandedPercent(minExtent: Int = 0) = 1 - shrinkedPercent(minExtent)
-    fun shrinkedPercent(minExtent: Int = 0) = if(maxExtent == 0) offset else offset / (maxExtent - minExtent)
+    fun expandedPercent() = 1 - shrinkedPercent()
+    fun shrinkedPercent() = if(extent == 0) offset else offset / extent
+
+    fun applyBoundaryConditions(value: Float): Float {
+        return value.coerceIn(0f, extent.toFloat())
+    }
 
     fun setOffset(newOffset: Float): Float { // phase
-        assert(newOffset >= minExtent) { "Given new offset has overflowed the min-extent." }
-        assert(newOffset <= maxExtent) { "Given new offset has overflowed the max-extent." }
+        // assert(newOffset >= minExtent) { "Given new offset has overflowed the min-extent." }
+        // assert(newOffset <= maxExtent) { "Given new offset has overflowed the max-extent." }
 
         val oldOffset = offset
 
         if (offset != newOffset) {
-            offset = newOffset
+            offset = applyBoundaryConditions(newOffset)
             return oldOffset - offset
         }
         return 0f

@@ -25,7 +25,6 @@ class AbsoluteSliverBehavior : AppBarBehavior {
 }
 
 class MaterialAppBarBehavior(
-    val minExtent: Int = 0,
     val floating: Boolean = true,
     val dragOnlyExpanding: Boolean = false,
 ) : AppBarBehavior {
@@ -49,14 +48,12 @@ class MaterialAppBarBehavior(
                 // for drag only expanding
                 if (dragOnlyExpanding
                     && source != NestedScrollSource.Drag
-                    && appbar.shrinkedPercent(minExtent) == 1f) {
+                    && appbar.shrinkedPercent() == 1f) {
                     return 0f
                 }
             }
         }
 
-        return appbar.setOffset(
-            (appbar.offset - delta).coerceIn(0f, (appbar.maxExtent - minExtent).toFloat())
-        )
+        return appbar.setOffset(appbar.offset - delta)
     }
 }
