@@ -14,6 +14,9 @@ AppBarConnection(
     AppBar(behavior = MaterialAppBarBehavior()) {
       // ... child component
     }
+    SizedAppBar(minExtent = 50, maxExtent = 100) {
+      // ... child component
+    }
   }
 ) {
   // Only scrollable component of vertical diraction are available.
