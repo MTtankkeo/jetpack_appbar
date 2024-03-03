@@ -1,7 +1,7 @@
 # AppBar in jetpack compose
 This package allows easy and light implementation of appbar in jetpack compose environment.
 
-> Designed to implement flexible app bar behavior by utilizing only fundamental underlying actions and excluding unnecessary features.
+> Designed to implement flexible appbar behavior by utilizing only fundamental underlying actions and excluding unnecessary features.
 
 ## How to make appbar?
 Please refer to the code below!
