@@ -14,6 +14,7 @@ AppBarConnection(
     AppBar(behavior = MaterialAppBarBehavior()) {
       // ... child component
     }
+    // or
     SizedAppBar(minExtent = 50, maxExtent = 100) {
       // ... child component
     }
