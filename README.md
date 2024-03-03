@@ -17,6 +17,7 @@ AppBarConnection(
   }
 ) {
   // Only scrollable component of vertical diraction are available.
+  // And, can wrapping to parent.
   LazyColumn {
     // ... items
   }
