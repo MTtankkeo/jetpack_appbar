@@ -28,7 +28,9 @@ AppBarConnection(
 ```
 
 ### How to apply effects according to appbar position?
-The code below is an example of implementing transparency effect.
+Please refer to the code below!
+
+> See also, this code is an example of implementing transparency effect.
 
 #### A good example
 ```kotlin
