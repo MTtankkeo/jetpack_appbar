@@ -46,6 +46,7 @@ AppBarConnection {
 // Based on others.
 AppBarConnection {
   val other = rememberAppBarState()
+
   AppBar(state = other) {
     // ... skip
   }
