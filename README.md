@@ -12,11 +12,10 @@ Please refer to the code below!
 AppBarConnection(
   appBars = {
     AppBar(behavior = MaterialAppBarBehavior()) {
-      // ... child component
+      // ... child
     }
-    // or
     SizedAppBar(minExtent = 50, maxExtent = 100) {
-      // ... child component
+      // ... child
     }
   }
 ) {
@@ -24,6 +23,50 @@ AppBarConnection(
   // And, can wrapping to parent.
   LazyColumn {
     // ... items
+  }
+}
+```
+
+### How to apply effects according to appbar position?
+The code below is an example of implementing transparency effect.
+
+#### A good example
+```kotlin
+// Based on oneself.
+AppBarConnection {
+  AppBar {
+    Box(modifier = Modifier.graphicsLayer {
+      alpha = it.expandedPercent()
+    }) {
+      // ... child
+    }
+  }
+}
+
+// Based on others.
+AppBarConnection {
+  val other = rememberAppBarState()
+  AppBar(state = other) {
+    // ... skip
+  }
+  AppBar {
+    Box(modifier = Modifier.graphicsLayer {
+      alpha = other.expandedPercent()
+    }) {
+      // ... child
+    }
+  }
+}
+```
+
+#### A bad example
+```kotlin
+AppBarConnection {
+  AppBar {
+    // This reduces performance, because re-composition when scrolled appbar.
+    Box(modifier = Modifier.alpha(it.expandedPercent())) {
+      // ... child
+    }
   }
 }
 ```
