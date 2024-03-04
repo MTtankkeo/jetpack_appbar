@@ -19,7 +19,7 @@ AppBarConnection(
     }
   }
 ) {
-  // Only scrollable component of vertical diraction are available.
+  // Only scrollable component of vertical direction are available.
   // And, can wrapping to parent.
   LazyColumn {
     // ... items
@@ -33,6 +33,8 @@ Please refer to the code below!
 > See also, this code is an example of implementing transparency effect.
 
 #### A good example
+This example is one of the ideal and simple or basic examples.
+
 ```kotlin
 // Based on oneself.
 AppBarConnection {
@@ -46,15 +48,16 @@ AppBarConnection {
 }
 
 // Based on others.
+// See also, the second appbar depends on the state of the first appbar.
 AppBarConnection {
-  val other = rememberAppBarState()
+  val first = rememberAppBarState()
 
   AppBar(state = other) {
     // ... skip
   }
   AppBar {
     Box(modifier = Modifier.graphicsLayer {
-      alpha = other.expandedPercent()
+      alpha = first.shrinkedPercent()
     }) {
       // ... child
     }
@@ -63,6 +66,8 @@ AppBarConnection {
 ```
 
 #### A bad example
+This example is also one of the bad development habits that causes performance degradation.
+
 ```kotlin
 AppBarConnection {
   AppBar {
