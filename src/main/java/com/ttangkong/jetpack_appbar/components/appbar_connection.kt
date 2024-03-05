@@ -36,7 +36,7 @@ fun AppBarConnection(
         }
     }
 
-    // A scrollable state may need to be referenced for handle the nested scroll of a sliver.
+    // A scrollable state may need to be referenced for handle the nested scroll of a appbar.
     controller.scrollableState = scrollableState
 
     CompositionLocalProvider(SliverController.Provider provides controller) {
@@ -47,12 +47,12 @@ fun AppBarConnection(
                     available: Offset,
                     source: NestedScrollSource
                 ): Offset {
-                    // If when not overflowed, not handle nested scroll for a sliver.
+                    // If when not overflowed, not handle nested scroll for a appbars.
                     if (available.y != 0f) {
                         return Offset(
                             x = 0f,
                             y = controller.onScroll(available.y, source)
-                        ) // the total consumed by a sliver.
+                        ) // the total consumed by a appbars.
                     }
 
                     return Offset.Zero
@@ -65,7 +65,7 @@ fun AppBarConnection(
                     return Offset(
                         x = 0f,
                         y = controller.onScroll(available.y, source),
-                    ) // the total consumed by a sliver.
+                    ) // the total consumed by a appbars.
                 }
             } })
         ) {

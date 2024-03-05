@@ -18,12 +18,14 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+// Used by [AppBar]
 enum class AppBarAlignment {
     Scroll,
     Center,
     Absolute,
 }
 
+// Used by [AppBarConnection].
 @Composable
 fun AppBar(
     modifier: Modifier = Modifier,
@@ -74,6 +76,7 @@ fun AppBar(
     }
 }
 
+// Used by [AppBarConnection].
 @Composable
 fun SizedAppBar(
     modifier: Modifier = Modifier,
