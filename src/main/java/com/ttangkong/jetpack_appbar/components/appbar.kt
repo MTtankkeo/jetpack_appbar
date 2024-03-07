@@ -17,7 +17,10 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import kotlin.math.roundToInt
 
+// This alignment constants for only the hide-able appbar.
+//
 // Used by [AppBar]
 enum class AppBarAlignment {
     Scroll,
@@ -25,10 +28,13 @@ enum class AppBarAlignment {
     Absolute,
 }
 
+// This appbar is a hide-able appbar that does not change its size directly.
+//
 // Used by [AppBarConnection].
 @Composable
 fun AppBar(
     modifier: Modifier = Modifier,
+    minExtent: Dp = 0.dp,
     alignment: AppBarAlignment = AppBarAlignment.Scroll,
     behavior: AppBarBehavior = MaterialAppBarBehavior(),
     state: AppBarState = rememberAppBarState(),
@@ -50,17 +56,23 @@ fun AppBar(
         modifier = modifier
             .clipToBounds()
             .layout() { measurable, constraints ->
-                // The sliver component should not always consider the height of
+                // The appbar component should not always consider the height of
                 // the parent component calculations.
                 val placeable = measurable.measure(
                     constraints.copy(maxHeight = Constraints.Infinity)
                 )
 
-                // The max-extent of the sliver is equal to the calculated height.
-                state.extent = placeable.height
+                // The extent of the appbar is equal to the calculated height - min-extent.
+                val extent = placeable.height - minExtent.toPx()
+                assert(extent >= 0f) {
+                    "The measured height of the appbar is less than the given min-extent."
+                }
+
+                state.extent = extent.roundToInt()
 
                 layout(constraints.maxWidth, placeable.height - state.offset.toInt()) {
-                    // 최종적으로 슬라이버 요소를 인자에 해당하는 적절한 위치로 배치합니다.
+                    // Layout the appbar components in the suitable position,
+                    // depending on the given argument.
                     placeable.placeRelative(
                         x = 0,
                         y = (when (alignment) {
@@ -111,7 +123,7 @@ fun SizedAppBar(
             .layout() { measurable, constraints ->
                 val height = maxExtent - state.offset.toInt()
 
-                // The sliver component should not always consider the height of
+                // The appbar component should not always consider the height of
                 // the parent component calculations.
                 val placeable = measurable.measure(
                     constraints.copy(maxHeight = height)

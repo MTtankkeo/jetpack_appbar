@@ -25,21 +25,21 @@ class SliverController {
 
     // Scrolls the attached a slivers in this controller.
     // And returns the total consumed by a slivers.
-    fun onScroll(delta: Float, source: NestedScrollSource): Float {
-        val targets = if (delta > 0) connections.reversed() else connections
+    fun onScroll(available: Float, source: NestedScrollSource): Float {
+        val targets = if (available > 0) connections.reversed() else connections
         var consumed = 0f
 
         for (it in targets) {
             consumed += it.behavior.handleScrollBy(
                 appbar = it.state,
                 scroll = scrollableState,
-                delta  = delta - consumed,
+                available = available - consumed,
                 source = source
             )
 
             // Ends unnecessary traversal as all the given scroll offset
             // have finally been consumed by a sliver.
-            if (consumed == delta) break
+            if (consumed == available) break
         }
 
         return consumed

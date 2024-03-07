@@ -28,7 +28,7 @@ fun AppBarConnection(
             modifier = Modifier.scrollable(
                 orientation = Orientation.Vertical,
                 state = rememberScrollableState {
-                    controller.onScroll(delta = it, NestedScrollSource.Drag)
+                    controller.onScroll(available = it, NestedScrollSource.Drag)
                 }
             )
         ) {

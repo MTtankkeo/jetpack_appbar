@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ttangkong.jetpack_appbar"
+    namespace = "com.ttangkong.compose_appbar"
     compileSdk = 34
 
     defaultConfig {
@@ -40,5 +40,5 @@ android {
 
 dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.compose.foundation:foundation:1.6.2")
+    implementation("androidx.compose.foundation:foundation:1.6.3")
 }

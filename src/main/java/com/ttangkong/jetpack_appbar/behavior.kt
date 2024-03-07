@@ -1,5 +1,6 @@
 package com.ttangkong.jetpack_appbar
 
+import android.util.Log
 import androidx.compose.foundation.gestures.ScrollableState
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 
@@ -10,7 +11,7 @@ interface AppBarBehavior {
     fun handleScrollBy(
         appbar: AppBarState,
         scroll: ScrollableState?,
-        delta: Float,
+        available: Float,
         source: NestedScrollSource
     ): Float
 }
@@ -19,7 +20,7 @@ class AbsoluteSliverBehavior : AppBarBehavior {
     override fun handleScrollBy(
         appbar: AppBarState,
         scroll: ScrollableState?,
-        delta: Float,
+        available: Float,
         source: NestedScrollSource
     ): Float = 0f
 }
@@ -31,7 +32,7 @@ class MaterialAppBarBehavior(
     override fun handleScrollBy(
         appbar: AppBarState,
         scroll: ScrollableState?,
-        delta: Float,
+        available: Float,
         source: NestedScrollSource
     ): Float {
         // APPBAR SCROLLING CONSTRAINTS
@@ -54,6 +55,6 @@ class MaterialAppBarBehavior(
             }
         }
 
-        return appbar.setOffset(appbar.offset - delta)
+        return appbar.setOffset(appbar.offset - available)
     }
 }
