@@ -52,7 +52,7 @@ AppBarConnection {
 AppBarConnection {
   val first = rememberAppBarState()
 
-  AppBar(state = other) {
+  AppBar(state = first) {
     // ... skip
   }
   AppBar {
