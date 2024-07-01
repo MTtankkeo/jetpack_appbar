@@ -78,3 +78,20 @@ AppBarConnection {
   }
 }
 ```
+
+## How to customize appbar?
+Try using the `MaterialAppBarBehavior` that is a providing standard feature in this package.
+
+```kotlin
+AppBarConnection {
+  AppBar(behavior = MaterialAppBarBehavior(floating = false, dragOnlyExpanding = true)) {}
+}
+```
+
+### properties of MaterialAppBarBehavior
+> When the value of floating is true, the value of dragOnlyExpanding must be false.
+
+| Properie | Description | Default value | Type
+| ------ | ------ | ------ | ------
+| floating | Whether possible with the app bar expands or shrinks even if a user do not scroll to the highest upper (when scroll offset 0). | true | boolean
+| dragOnlyExpanding | Whether only possible with drag when the user needs to start extending the appbar. | false | boolean
