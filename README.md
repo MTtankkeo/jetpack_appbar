@@ -14,13 +14,11 @@ Please refer to the code below!
 
 ```kotlin
 AppBarConnection(
-  appBars = {
-    AppBar(behavior = MaterialAppBarBehavior()) {
-      // ... child
-    }
-    SizedAppBar(minExtent = 50, maxExtent = 100) {
-      // ... child
-    }
+  AppBar(behavior = MaterialAppBarBehavior()) {
+    // ... child
+  }
+  SizedAppBar(minExtent = 50, maxExtent = 100) {
+    // ... child
   }
 ) {
   // Only scrollable component of vertical direction are available.
@@ -87,6 +85,12 @@ AppBarConnection {
 Try applying the `AppBarAlignment` that is a providing standard enumeration in this package.
 
 > This alignment constants for only the hide-able appbar.
+
+```kotlin
+AppBarConnection(
+  AppBar(alignment = AppBarAlignment.Center) {}
+)
+```
 
 ### properties of AppBarAlignment
 | Properie | Description
