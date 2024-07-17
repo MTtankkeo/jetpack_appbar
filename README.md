@@ -1,4 +1,4 @@
-# AppBar in jetpack compose
+# ![jetpack_compose](https://github.com/user-attachments/assets/b5101318-a5e5-4efb-9cd1-8e24279bc1b1) AppBar in jetpack compose
 This package allows easy and light implementation of appbar in jetpack compose environment.
 
 > Designed to implement flexible appbar behavior by utilizing only fundamental underlying behaviors and excluding unnecessary features.
@@ -78,6 +78,18 @@ AppBarConnection {
   }
 }
 ```
+
+## How to customize appbar alignment?
+Try applying the `AppBarAlignment` that is a providing standard enumeration in this package.
+
+> This alignment constants for only the hide-able appbar.
+
+### properties of AppBarAlignment
+| Properie | Description
+| ------ | ------ |
+| Scroll | Display the same as the scroll item. (is Default Value)
+| Center | Based on the size of the appbar, the center is located at the center of the size of the appbar.
+| Absolute | Even if the appbar is reduced and expanded, the absolute position of the appbar does not change.
 
 ## How to customize appbar?
 Try using the `MaterialAppBarBehavior` that is a providing standard feature in this package.
