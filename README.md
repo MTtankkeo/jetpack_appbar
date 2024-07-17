@@ -1,4 +1,8 @@
-# ![jetpack_compose](https://github.com/user-attachments/assets/b5101318-a5e5-4efb-9cd1-8e24279bc1b1) AppBar in jetpack compose
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/68792aec-916f-44ab-89a6-38296fb1fa68"></img>
+  <h1>Jetpack Compose AppBar</h1>
+</div>
+
 This package allows easy and light implementation of appbar in jetpack compose environment.
 
 > Designed to implement flexible appbar behavior by utilizing only fundamental underlying behaviors and excluding unnecessary features.
