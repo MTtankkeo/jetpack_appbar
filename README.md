@@ -1,6 +1,14 @@
 <div align="center">
   <img src="https://github.com/user-attachments/assets/68792aec-916f-44ab-89a6-38296fb1fa68"></img>
   <h1>Jetpack Compose AppBar</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Version</th>
+        <th>v1.0.1-alpha2</th>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 This package allows easy and light implementation of appbar in jetpack compose environment.
